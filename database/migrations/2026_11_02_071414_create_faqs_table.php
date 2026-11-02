@@ -13,7 +13,15 @@ return new class extends Migration
     {
         Schema::create('faqs', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('category_id')->nullable()->constrained('faq_categories')->onDelete('set null');
+            $table->string('question', 500);
+            $table->longText('answer');
+            $table->unsignedInteger('order')->default(0);
+            $table->enum('status', ['draft', 'published'])->default('published');
             $table->timestamps();
+
+            $table->index('category_id');
+            $table->index('status');
         });
     }
 

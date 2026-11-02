@@ -13,7 +13,12 @@ return new class extends Migration
     {
         Schema::create('project_tags', function (Blueprint $table) {
             $table->id();
+            $table->string('name', 100);
+            $table->string('slug', 100)->unique();
+            $table->string('color', 7)->default('#95a5a6');
             $table->timestamps();
+
+            $table->index('slug');
         });
     }
 

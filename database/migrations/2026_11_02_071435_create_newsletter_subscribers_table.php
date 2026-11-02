@@ -13,7 +13,16 @@ return new class extends Migration
     {
         Schema::create('newsletter_subscribers', function (Blueprint $table) {
             $table->id();
+            $table->string('email')->unique();
+            $table->string('name')->nullable();
+            $table->enum('status', ['subscribed', 'unsubscribed'])->default('subscribed');
+            $table->string('ip_address', 45)->nullable();
+            $table->timestamp('subscribed_at')->nullable();
+            $table->timestamp('unsubscribed_at')->nullable();
             $table->timestamps();
+
+            $table->index('email');
+            $table->index('status');
         });
     }
 

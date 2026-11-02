@@ -13,7 +13,21 @@ return new class extends Migration
     {
         Schema::create('testimonials', function (Blueprint $table) {
             $table->id();
+            $table->string('client_name');
+            $table->string('position')->nullable();
+            $table->string('company')->nullable();
+            $table->string('company_logo')->nullable();
+            $table->unsignedTinyInteger('rating')->default(5);
+            $table->text('testimonial');
+            $table->string('avatar')->nullable();
+            $table->boolean('is_featured')->default(false);
+            $table->enum('status', ['pending', 'approved'])->default('pending');
+            $table->unsignedInteger('order')->default(0);
             $table->timestamps();
+
+            $table->index('status');
+            $table->index('is_featured');
+            $table->index('rating');
         });
     }
 
