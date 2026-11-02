@@ -9,7 +9,8 @@
       "Bash(powershell -Command \"Remove-Item -Path ''public'' -Force -Recurse\")",
       "Bash(then cp -r resources/slaze/assets public/)",
       "Bash(find:*)",
-      "Bash(cat:*)"
+      "Bash(cat:*)",
+      "Bash(php artisan:*)"
     ],
     "deny": [],
     "ask": []

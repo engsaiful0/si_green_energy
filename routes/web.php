@@ -133,6 +133,7 @@ use App\Http\Controllers\Admin\ServiceCategoryController;
 use App\Http\Controllers\Admin\ServiceController;
 use App\Http\Controllers\Admin\BlogCategoryController;
 use App\Http\Controllers\Admin\BlogPostController;
+use App\Http\Controllers\Admin\SliderController;
 
 Route::prefix('admin')->name('admin.')->group(function () {
     // Login routes (guest only)
@@ -168,10 +169,8 @@ Route::prefix('admin')->name('admin.')->middleware('admin')->group(function () {
         return view('admin.menus.index');
     })->name('menus.index');
 
-    // Sliders
-    Route::get('/sliders', function () {
-        return view('admin.sliders.index');
-    })->name('sliders.index');
+    // Sliders (Resource Routes)
+    Route::resource('sliders', SliderController::class);
 
     // Product Categories (Resource Routes)
     Route::resource('product-categories', ProductCategoryController::class);
