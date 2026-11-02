@@ -145,6 +145,7 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\RoleController;
+use App\Http\Controllers\Admin\PageController;
 
 Route::prefix('admin')->name('admin.')->group(function () {
     // Login routes (guest only)
@@ -167,10 +168,8 @@ Route::prefix('admin')->name('admin.')->middleware('admin')->group(function () {
     // Dashboard
     Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
 
-    // Pages
-    Route::get('/pages', function () {
-        return view('admin.pages.index');
-    })->name('pages.index');
+    // Pages (Resource Routes)
+    Route::resource('pages', PageController::class);
 
     // Homepage Sections
     Route::get('/homepage-sections', function () {
