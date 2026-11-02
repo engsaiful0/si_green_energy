@@ -1,9 +1,4 @@
 <IfModule mod_rewrite.c>
-    RewriteEngine On
-    RewriteBase /si_green_energy/
-
-    # Redirect all requests to public folder
-    RewriteCond %{REQUEST_FILENAME} !-d
-    RewriteCond %{REQUEST_FILENAME} !-f
-    RewriteRule ^(.*)$ public/$1 [L,QSA]
+    # Root htaccess disabled - Access public folder directly
+    # Use URLs like: http://localhost/si_green_energy/public/
 </IfModule>
