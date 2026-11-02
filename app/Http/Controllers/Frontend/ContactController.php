@@ -37,9 +37,17 @@ class ContactController extends Controller
     }
 
     /**
+     * Display the quote request form.
+     */
+    public function quote()
+    {
+        return view('frontend.quote');
+    }
+
+    /**
      * Store a quote request.
      */
-    public function quote(Request $request)
+    public function storeQuote(Request $request)
     {
         $validated = $request->validate([
             'name' => ['required', 'string', 'max:255'],
