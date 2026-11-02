@@ -14,22 +14,22 @@
     <title>@yield('title', config('app.name', 'SI Green Energy'))</title>
 
     <!-- Favicons -->
-    <link rel="icon" type="image/png" href="{{ asset('assets/slaze/img/favicon-1.png') }}">
+    <link rel="icon" type="image/png" href="{{ asset('img/favicon-1.png') }}">
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="{{ asset('assets/slaze/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
     <!-- Font Awesome CSS -->
-    <link rel="stylesheet" href="{{ asset('assets/slaze/css/fontawesome.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/fontawesome.css') }}">
     <!-- Animate CSS -->
-    <link rel="stylesheet" href="{{ asset('assets/slaze/css/animate.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/animate.css') }}">
     <!-- Flaticon -->
-    <link rel="stylesheet" href="{{ asset('assets/slaze/font/flaticon_slaze.css') }}">
+    <link rel="stylesheet" href="{{ asset('font/flaticon_slaze.css') }}">
     <!-- Swiper Bundle CSS -->
-    <link rel="stylesheet" href="{{ asset('assets/slaze/css/swiper-bundle.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/swiper-bundle.min.css') }}">
     <!-- Magnific Popup CSS -->
-    <link rel="stylesheet" href="{{ asset('assets/slaze/css/magnific-popup.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/magnific-popup.css') }}">
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="{{ asset('assets/slaze/sass/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
 
     @stack('styles')
 </head>
@@ -82,25 +82,25 @@
     <!-- Scroll Btn End -->
 
     <!-- Main JS -->
-    <script src="{{ asset('assets/slaze/js/jquery-3.7.0.min.js') }}"></script>
+    <script src="{{ asset('js/jquery-3.7.0.min.js') }}"></script>
     <!-- Bootstrap JS -->
-    <script src="{{ asset('assets/slaze/js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('js/bootstrap.min.js') }}"></script>
     <!-- Counter Up JS -->
-    <script src="{{ asset('assets/slaze/js/jquery.counterup.min.js') }}"></script>
+    <script src="{{ asset('js/jquery.counterup.min.js') }}"></script>
     <!-- Popper JS -->
-    <script src="{{ asset('assets/slaze/js/popper.min.js') }}"></script>
+    <script src="{{ asset('js/popper.min.js') }}"></script>
     <!-- Progressbar JS -->
-    <script src="{{ asset('assets/slaze/js/progressbar.min.js') }}"></script>
+    <script src="{{ asset('js/progressbar.min.js') }}"></script>
     <!-- Magnific Popup JS -->
-    <script src="{{ asset('assets/slaze/js/jquery.magnific-popup.min.js') }}"></script>
+    <script src="{{ asset('js/jquery.magnific-popup.min.js') }}"></script>
     <!-- Swiper Bundle JS -->
-    <script src="{{ asset('assets/slaze/js/swiper-bundle.min.js') }}"></script>
+    <script src="{{ asset('js/swiper-bundle.min.js') }}"></script>
     <!-- Isotope JS -->
-    <script src="{{ asset('assets/slaze/js/isotope.pkgd.min.js') }}"></script>
+    <script src="{{ asset('js/isotope.pkgd.min.js') }}"></script>
     <!-- Waypoints JS -->
-    <script src="{{ asset('assets/slaze/js/jquery.waypoints.min.js') }}"></script>
+    <script src="{{ asset('js/jquery.waypoints.min.js') }}"></script>
     <!-- Custom JS -->
-    <script src="{{ asset('assets/slaze/js/custom.js') }}"></script>
+    <script src="{{ asset('js/custom.js') }}"></script>
 
     @stack('scripts')
 </body>

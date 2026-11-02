@@ -5,7 +5,7 @@
 
 @section('content')
 <!-- Page Banner Start -->
-<div class="page__banner" data-background="{{ asset('assets/slaze/img/banner/page-banner.jpg') }}">
+<div class="page__banner" data-background="{{ asset('img/banner/page-banner.jpg') }}">
     <div class="container">
         <div class="row">
             <div class="col-lg-12">

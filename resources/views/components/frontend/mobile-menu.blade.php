@@ -3,7 +3,7 @@
     <div class="menu__bar-popup-top">
         <div class="logo">
             <a href="{{ route('home') }}">
-                <img src="{{ asset('assets/slaze/img/logo-2.png') }}" alt="{{ config('app.name') }}">
+                <img src="{{ asset('img/logo-2.png') }}" alt="{{ config('app.name') }}">
             </a>
         </div>
         <div class="close"><i class="fal fa-times"></i></div>

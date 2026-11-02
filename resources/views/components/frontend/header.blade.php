@@ -5,7 +5,7 @@
             <div class="header__area-menubar-left one">
                 <div class="header__area-menubar-left-logo">
                     <a href="{{ route('home') }}">
-                        <img src="{{ asset('assets/slaze/img/logo-1.png') }}" alt="{{ config('app.name') }}">
+                        <img src="{{ asset('img/logo-1.png') }}" alt="{{ config('app.name') }}">
                     </a>
                 </div>
             </div>

@@ -5,7 +5,7 @@
 
 @section('content')
 <!-- Page Banner Start -->
-<div class="page__banner" data-background="{{ asset('assets/slaze/img/banner/page-banner.jpg') }}">
+<div class="page__banner" data-background="{{ asset('img/banner/page-banner.jpg') }}">
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
@@ -36,7 +36,7 @@
                     @if($product->featured_image)
                     <img src="{{ asset($product->featured_image) }}" alt="{{ $product->name }}" class="main-image">
                     @else
-                    <img src="{{ asset('assets/slaze/img/placeholder-product.jpg') }}" alt="{{ $product->name }}" class="main-image">
+                    <img src="{{ asset('img/placeholder-product.jpg') }}" alt="{{ $product->name }}" class="main-image">
                     @endif
 
                     @if($product->images && $product->images->count() > 0)

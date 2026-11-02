@@ -9,7 +9,7 @@
     <div class="swiper banner-slider">
         <div class="swiper-wrapper">
             <div class="banner__one-image swiper-slide">
-                <img class="banner__one-shape" src="{{ asset('assets/slaze/img/shape/shape-3.png') }}" alt="banner-shape">
+                <img class="banner__one-shape" src="{{ asset('img/shape/shape-3.png') }}" alt="banner-shape">
                 <div class="container">
                     <div class="row">
                         <div class="col-lg-12">

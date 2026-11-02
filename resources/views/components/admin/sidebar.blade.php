@@ -2,7 +2,7 @@
     <!-- Logo -->
     <div class="logo">
         <a href="{{ route('admin.dashboard') }}">
-            <img src="{{ asset('assets/slaze/img/logo-2.png') }}" alt="{{ config('app.name') }}">
+            <img src="{{ asset('img/logo-2.png') }}" alt="{{ config('app.name') }}">
         </a>
     </div>
 

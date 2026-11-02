@@ -3,7 +3,7 @@
     <div class="sidebar-close-btn"><i class="fal fa-times"></i></div>
     <div class="header__area-menubar-right-sidebar-popup-logo">
         <a href="{{ route('home') }}">
-            <img src="{{ asset('assets/slaze/img/logo-2.png') }}" alt="{{ config('app.name') }}">
+            <img src="{{ asset('img/logo-2.png') }}" alt="{{ config('app.name') }}">
         </a>
     </div>
     <p>{{ $sidebarDescription ?? 'The insurance company assumes the financial risk of covering these events in exchange for the premiums paid by the policyholder. There are many different types of insurance,' }}</p>

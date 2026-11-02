@@ -6,7 +6,7 @@
                 <div class="footer__area-widget">
                     <div class="footer__area-widget-logo mb-30">
                         <a href="{{ route('home') }}">
-                            <img src="{{ asset('assets/slaze/img/logo-2.png') }}" alt="{{ config('app.name') }}">
+                            <img src="{{ asset('img/logo-2.png') }}" alt="{{ config('app.name') }}">
                         </a>
                     </div>
                     <p>{{ $footerDescription ?? 'The insurance company assumes the financial risk of covering these events in exchange for the premiums paid by the policyholder.' }}</p>
