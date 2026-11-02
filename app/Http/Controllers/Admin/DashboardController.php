@@ -31,7 +31,7 @@ class DashboardController extends Controller
         ];
 
         // Monthly enquiries (last 6 months)
-        $monthlyEnquiries = ContactMessage::selectRaw('DATE_FORMAT(created_at, "%Y-%m") as month, COUNT(*) as count')
+        $monthlyEnquiries = ContactMessage::selectRaw('strftime("%Y-%m", created_at) as month, COUNT(*) as count')
             ->where('created_at', '>=', now()->subMonths(6))
             ->groupBy('month')
             ->orderBy('month')

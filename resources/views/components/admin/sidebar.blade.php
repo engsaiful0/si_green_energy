@@ -72,7 +72,7 @@
         <div class="menu-section">Content</div>
         <ul class="nav flex-column">
             <li class="nav-item">
-                <a class="nav-link" href="{{ route('admin.blog.index') }}">
+                <a class="nav-link {{ request()->routeIs('admin.blog-posts.*') ? 'active' : '' }}" href="{{ route('admin.blog-posts.index') }}">
                     <i class="fas fa-blog"></i> Blog Posts
                 </a>
             </li>

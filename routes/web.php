@@ -116,9 +116,6 @@ Route::get('/terms', function () {
     return view('frontend.pages.terms');
 })->name('terms');
 
-// Dynamic Pages (must be last to avoid conflicts)
-Route::get('/{slug}', [FrontendPageController::class, 'show'])->name('pages.show');
-
 /*
 |--------------------------------------------------------------------------
 | Admin Authentication Routes
@@ -267,3 +264,6 @@ Route::prefix('admin')->name('admin.')->middleware('admin')->group(function () {
         return view('admin.profile');
     })->name('profile');
 });
+
+// Dynamic Pages (must be last so it does not capture /admin and other defined routes)
+Route::get('/{slug}', [FrontendPageController::class, 'show'])->name('pages.show');
