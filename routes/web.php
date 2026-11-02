@@ -1,6 +1,12 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Frontend\PageController as FrontendPageController;
+use App\Http\Controllers\Frontend\ProductController as FrontendProductController;
+use App\Http\Controllers\Frontend\ServiceController as FrontendServiceController;
+use App\Http\Controllers\Frontend\BlogController as FrontendBlogController;
+use App\Http\Controllers\Frontend\ContactController;
+use App\Http\Controllers\Frontend\SearchController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,14 +33,14 @@ Route::get('/about', function () {
     return view('frontend.pages.about');
 })->name('about');
 
-// Services
-Route::get('/services', function () {
-    return view('frontend.pages.services.index');
-})->name('services.index');
+// Products
+Route::get('/products', [FrontendProductController::class, 'index'])->name('products.index');
+Route::get('/products/category/{slug}', [FrontendProductController::class, 'category'])->name('products.category');
+Route::get('/products/{slug}', [FrontendProductController::class, 'show'])->name('products.show');
 
-Route::get('/services/grid', function () {
-    return view('frontend.pages.services.grid');
-})->name('services.grid');
+// Services
+Route::get('/services', [FrontendServiceController::class, 'index'])->name('services.index');
+Route::get('/services/{slug}', [FrontendServiceController::class, 'show'])->name('services.show');
 
 // Pricing
 Route::get('/pricing', function () {
@@ -78,53 +84,28 @@ Route::get('/projects/4-columns', function () {
 })->name('projects.grid4');
 
 // Blog
-Route::get('/blog', function () {
-    return view('frontend.pages.blog.index');
-})->name('blog.index');
-
-Route::get('/blog/grid-2', function () {
-    return view('frontend.pages.blog.grid2');
-})->name('blog.grid2');
-
-Route::get('/blog/grid-3', function () {
-    return view('frontend.pages.blog.grid3');
-})->name('blog.grid3');
-
-Route::get('/blog/left-sidebar', function () {
-    return view('frontend.pages.blog.left');
-})->name('blog.left');
-
-Route::get('/blog/full-width', function () {
-    return view('frontend.pages.blog.full');
-})->name('blog.full');
-
-Route::get('/blog/right-sidebar', function () {
-    return view('frontend.pages.blog.right');
-})->name('blog.right');
+Route::get('/blog', [FrontendBlogController::class, 'index'])->name('blog.index');
+Route::get('/blog/category/{slug}', [FrontendBlogController::class, 'category'])->name('blog.category');
+Route::get('/blog/tag/{slug}', [FrontendBlogController::class, 'tag'])->name('blog.tag');
+Route::get('/blog/{slug}', [FrontendBlogController::class, 'show'])->name('blog.show');
 
 // Contact
-Route::get('/contact', function () {
-    return view('frontend.pages.contact');
-})->name('contact');
+Route::get('/contact', [ContactController::class, 'index'])->name('contact');
+Route::post('/contact', [ContactController::class, 'store'])->name('contact.store');
 
 Route::get('/contact-alt', function () {
     return view('frontend.pages.contact-alt');
 })->name('contact.alt');
 
 // Quote
-Route::get('/quote', function () {
-    return view('frontend.pages.quote');
-})->name('quote');
+Route::get('/quote', [ContactController::class, 'quote'])->name('quote');
+Route::post('/quote', [ContactController::class, 'storeQuote'])->name('quote.store');
 
 // Search
-Route::get('/search', function () {
-    return view('frontend.pages.search');
-})->name('search');
+Route::get('/search', [SearchController::class, 'index'])->name('search');
 
 // Newsletter
-Route::post('/newsletter/subscribe', function () {
-    return redirect()->back()->with('success', 'Thank you for subscribing!');
-})->name('newsletter.subscribe');
+Route::post('/newsletter/subscribe', [ContactController::class, 'subscribe'])->name('newsletter.subscribe');
 
 // Privacy & Terms
 Route::get('/privacy', function () {
@@ -134,6 +115,9 @@ Route::get('/privacy', function () {
 Route::get('/terms', function () {
     return view('frontend.pages.terms');
 })->name('terms');
+
+// Dynamic Pages (must be last to avoid conflicts)
+Route::get('/{slug}', [FrontendPageController::class, 'show'])->name('pages.show');
 
 /*
 |--------------------------------------------------------------------------
