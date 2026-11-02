@@ -1,4 +1,28 @@
 <IfModule mod_rewrite.c>
-    # Root htaccess disabled - Access public folder directly
-    # Use URLs like: http://localhost/si_green_energy/public/
+    <IfModule mod_negotiation.c>
+        Options -MultiViews -Indexes
+    </IfModule>
+
+    RewriteEngine On
+    RewriteBase /si_green_energy/
+
+    # Block sensitive application paths
+    RewriteRule ^(app|bootstrap|config|database|resources|routes|storage|tests|vendor|node_modules)/ - [F,L]
+
+    # Redirect /public/... to /... so the URL never needs "public"
+    RewriteCond %{THE_REQUEST} \s/si_green_energy/public/ [NC]
+    RewriteRule ^public/(.*)$ $1 [R=301,L]
+
+    # Serve CSS, JS, images and other files that live in /public
+    RewriteRule ^(css|js|img|font|fonts|webfonts|vendor|storage)(/.*)?$ public/$0 [L]
+    RewriteRule ^(favicon\.ico|robots\.txt)$ public/$0 [L]
+
+    # Front controller (project-root index.php keeps the base path without /public)
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteRule ^ index.php [L]
 </IfModule>
+
+<FilesMatch "^(\.env|artisan|composer\.(json|lock)|package(-lock)?\.json|phpunit\.xml)$">
+    Require all denied
+</FilesMatch>

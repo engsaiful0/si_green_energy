@@ -5,6 +5,10 @@
 
     RewriteEngine On
 
+    # Send browser requests that still use /public/ to the same path without it
+    RewriteCond %{THE_REQUEST} \s/si_green_energy/public(?:/(\S*))?\s [NC]
+    RewriteRule ^ /si_green_energy/%1 [R=301,L]
+
     # Handle Authorization Header
     RewriteCond %{HTTP:Authorization} .
     RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
