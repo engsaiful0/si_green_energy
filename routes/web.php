@@ -148,6 +148,10 @@ use App\Http\Controllers\Admin\RoleController;
 use App\Http\Controllers\Admin\PageController;
 use App\Http\Controllers\Admin\ProductCategoryController;
 use App\Http\Controllers\Admin\ProductController;
+use App\Http\Controllers\Admin\ServiceCategoryController;
+use App\Http\Controllers\Admin\ServiceController;
+use App\Http\Controllers\Admin\BlogCategoryController;
+use App\Http\Controllers\Admin\BlogPostController;
 
 Route::prefix('admin')->name('admin.')->group(function () {
     // Login routes (guest only)
@@ -194,10 +198,11 @@ Route::prefix('admin')->name('admin.')->middleware('admin')->group(function () {
     // Products (Resource Routes)
     Route::resource('products', ProductController::class);
 
-    // Services
-    Route::get('/services', function () {
-        return view('admin.services.index');
-    })->name('services.index');
+    // Service Categories (Resource Routes)
+    Route::resource('service-categories', ServiceCategoryController::class)->except(['show', 'create']);
+
+    // Services (Resource Routes)
+    Route::resource('services', ServiceController::class);
 
     // Projects
     Route::get('/projects', function () {
@@ -209,10 +214,14 @@ Route::prefix('admin')->name('admin.')->middleware('admin')->group(function () {
         return view('admin.pricing.index');
     })->name('pricing.index');
 
-    // Blog
-    Route::get('/blog', function () {
-        return view('admin.blog.index');
-    })->name('blog.index');
+    // Blog Categories (Inline Routes)
+    Route::get('/blog-categories', [BlogCategoryController::class, 'index'])->name('blog-categories.index');
+    Route::post('/blog-categories', [BlogCategoryController::class, 'store'])->name('blog-categories.store');
+    Route::put('/blog-categories/{blogCategory}', [BlogCategoryController::class, 'update'])->name('blog-categories.update');
+    Route::delete('/blog-categories/{blogCategory}', [BlogCategoryController::class, 'destroy'])->name('blog-categories.destroy');
+
+    // Blog Posts (Resource Routes)
+    Route::resource('blog-posts', BlogPostController::class);
 
     // Team
     Route::get('/team', function () {
