@@ -55,7 +55,7 @@
                 <li><a class="dropdown-item" href="{{ route('admin.settings.general') }}"><i class="fas fa-cog me-2"></i> Settings</a></li>
                 <li><hr class="dropdown-divider"></li>
                 <li>
-                    <form action="{{ route('logout') }}" method="POST">
+                    <form action="{{ route('admin.logout') }}" method="POST">
                         @csrf
                         <button type="submit" class="dropdown-item text-danger">
                             <i class="fas fa-sign-out-alt me-2"></i> Logout

@@ -118,6 +118,21 @@
             </li>
         </ul>
 
+        <!-- User Management -->
+        <div class="menu-section">User Management</div>
+        <ul class="nav flex-column">
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('admin.users.index') }}">
+                    <i class="fas fa-users"></i> Users
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('admin.roles.index') }}">
+                    <i class="fas fa-shield-alt"></i> Roles & Permissions
+                </a>
+            </li>
+        </ul>
+
         <!-- Settings -->
         <div class="menu-section">Settings</div>
         <ul class="nav flex-column">
@@ -134,11 +149,6 @@
             <li class="nav-item">
                 <a class="nav-link" href="{{ route('admin.settings.seo') }}">
                     <i class="fas fa-search"></i> SEO Settings
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="{{ route('admin.users.index') }}">
-                    <i class="fas fa-user-shield"></i> Users & Roles
                 </a>
             </li>
         </ul>

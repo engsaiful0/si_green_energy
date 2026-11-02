@@ -12,12 +12,48 @@
     <div class="d-flex justify-content-between align-items-center mb-4">
         <h2 class="mb-0">Dashboard</h2>
         <div>
-            <span class="text-muted">Welcome back, Admin!</span>
+            <span class="text-muted">Welcome back, {{ auth()->user()->name }}!</span>
         </div>
     </div>
 
     <!-- Statistics Cards -->
     <div class="row g-3 mb-4">
+        <!-- Users -->
+        <div class="col-xl-3 col-md-6">
+            <div class="card stat-card">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div>
+                            <p class="text-muted mb-1">Total Users</p>
+                            <h3 class="mb-0">{{ $stats['users'] }}</h3>
+                            <small class="text-muted">System users</small>
+                        </div>
+                        <div class="icon bg-primary bg-opacity-10 text-primary">
+                            <i class="fas fa-users"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Pages -->
+        <div class="col-xl-3 col-md-6">
+            <div class="card stat-card">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div>
+                            <p class="text-muted mb-1">Total Pages</p>
+                            <h3 class="mb-0">{{ $stats['pages'] }}</h3>
+                            <small class="text-muted">Website pages</small>
+                        </div>
+                        <div class="icon bg-success bg-opacity-10 text-success">
+                            <i class="fas fa-file"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <!-- Products -->
         <div class="col-xl-3 col-md-6">
             <div class="card stat-card">
@@ -25,10 +61,10 @@
                     <div class="d-flex justify-content-between align-items-center">
                         <div>
                             <p class="text-muted mb-1">Total Products</p>
-                            <h3 class="mb-0">24</h3>
-                            <small class="text-success"><i class="fas fa-arrow-up"></i> 12% from last month</small>
+                            <h3 class="mb-0">{{ $stats['products'] }}</h3>
+                            <small class="text-muted">Product catalog</small>
                         </div>
-                        <div class="icon bg-primary bg-opacity-10 text-primary">
+                        <div class="icon bg-info bg-opacity-10 text-info">
                             <i class="fas fa-box"></i>
                         </div>
                     </div>
@@ -43,17 +79,20 @@
                     <div class="d-flex justify-content-between align-items-center">
                         <div>
                             <p class="text-muted mb-1">Total Services</p>
-                            <h3 class="mb-0">12</h3>
-                            <small class="text-success"><i class="fas fa-arrow-up"></i> 8% from last month</small>
+                            <h3 class="mb-0">{{ $stats['services'] }}</h3>
+                            <small class="text-muted">Service offerings</small>
                         </div>
-                        <div class="icon bg-success bg-opacity-10 text-success">
+                        <div class="icon bg-warning bg-opacity-10 text-warning">
                             <i class="fas fa-cogs"></i>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
 
+    <!-- Business Statistics -->
+    <div class="row g-3 mb-4">
         <!-- Projects -->
         <div class="col-xl-3 col-md-6">
             <div class="card stat-card">
@@ -61,10 +100,10 @@
                     <div class="d-flex justify-content-between align-items-center">
                         <div>
                             <p class="text-muted mb-1">Total Projects</p>
-                            <h3 class="mb-0">48</h3>
-                            <small class="text-success"><i class="fas fa-arrow-up"></i> 15% from last month</small>
+                            <h3 class="mb-0">{{ $stats['projects'] }}</h3>
+                            <small class="text-muted">Portfolio items</small>
                         </div>
-                        <div class="icon bg-info bg-opacity-10 text-info">
+                        <div class="icon bg-danger bg-opacity-10 text-danger">
                             <i class="fas fa-project-diagram"></i>
                         </div>
                     </div>
@@ -79,32 +118,11 @@
                     <div class="d-flex justify-content-between align-items-center">
                         <div>
                             <p class="text-muted mb-1">Blog Posts</p>
-                            <h3 class="mb-0">86</h3>
-                            <small class="text-success"><i class="fas fa-arrow-up"></i> 22% from last month</small>
+                            <h3 class="mb-0">{{ $stats['blog_posts'] }}</h3>
+                            <small class="text-muted">Published articles</small>
                         </div>
-                        <div class="icon bg-warning bg-opacity-10 text-warning">
+                        <div class="icon bg-purple bg-opacity-10 text-purple">
                             <i class="fas fa-blog"></i>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Business Statistics -->
-    <div class="row g-3 mb-4">
-        <!-- Quote Requests -->
-        <div class="col-xl-3 col-md-6">
-            <div class="card stat-card">
-                <div class="card-body">
-                    <div class="d-flex justify-content-between align-items-center">
-                        <div>
-                            <p class="text-muted mb-1">Quote Requests</p>
-                            <h3 class="mb-0">15</h3>
-                            <small class="text-muted">This month</small>
-                        </div>
-                        <div class="icon bg-danger bg-opacity-10 text-danger">
-                            <i class="fas fa-file-invoice"></i>
                         </div>
                     </div>
                 </div>
@@ -117,11 +135,11 @@
                 <div class="card-body">
                     <div class="d-flex justify-content-between align-items-center">
                         <div>
-                            <p class="text-muted mb-1">Unread Messages</p>
-                            <h3 class="mb-0">8</h3>
-                            <small class="text-muted">Requires attention</small>
+                            <p class="text-muted mb-1">Contact Messages</p>
+                            <h3 class="mb-0">{{ $stats['contact_messages'] }}</h3>
+                            <small class="text-muted">Total enquiries</small>
                         </div>
-                        <div class="icon bg-purple bg-opacity-10 text-purple">
+                        <div class="icon bg-secondary bg-opacity-10 text-secondary">
                             <i class="fas fa-envelope"></i>
                         </div>
                     </div>
@@ -129,36 +147,18 @@
             </div>
         </div>
 
-        <!-- Newsletter Subscribers -->
+        <!-- Quote Requests -->
         <div class="col-xl-3 col-md-6">
             <div class="card stat-card">
                 <div class="card-body">
                     <div class="d-flex justify-content-between align-items-center">
                         <div>
-                            <p class="text-muted mb-1">Newsletter Subscribers</p>
-                            <h3 class="mb-0">1,234</h3>
-                            <small class="text-success"><i class="fas fa-arrow-up"></i> 45 new this week</small>
-                        </div>
-                        <div class="icon bg-secondary bg-opacity-10 text-secondary">
-                            <i class="fas fa-paper-plane"></i>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Team Members -->
-        <div class="col-xl-3 col-md-6">
-            <div class="card stat-card">
-                <div class="card-body">
-                    <div class="d-flex justify-content-between align-items-center">
-                        <div>
-                            <p class="text-muted mb-1">Team Members</p>
-                            <h3 class="mb-0">12</h3>
-                            <small class="text-muted">Active members</small>
+                            <p class="text-muted mb-1">Quote Requests</p>
+                            <h3 class="mb-0">{{ $stats['quote_requests'] }}</h3>
+                            <small class="text-muted">Total requests</small>
                         </div>
                         <div class="icon bg-dark bg-opacity-10 text-dark">
-                            <i class="fas fa-users"></i>
+                            <i class="fas fa-file-invoice"></i>
                         </div>
                     </div>
                 </div>

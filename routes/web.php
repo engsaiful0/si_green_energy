@@ -137,15 +137,35 @@ Route::get('/terms', function () {
 
 /*
 |--------------------------------------------------------------------------
-| Admin Routes
+| Admin Authentication Routes
 |--------------------------------------------------------------------------
 */
 
+use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\Admin\RoleController;
+
 Route::prefix('admin')->name('admin.')->group(function () {
+    // Login routes (guest only)
+    Route::middleware('guest')->group(function () {
+        Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
+        Route::post('/login', [LoginController::class, 'login']);
+    });
+
+    // Logout route (auth only)
+    Route::post('/logout', [LoginController::class, 'logout'])->name('logout')->middleware('auth');
+});
+
+/*
+|--------------------------------------------------------------------------
+| Admin Protected Routes
+|--------------------------------------------------------------------------
+*/
+
+Route::prefix('admin')->name('admin.')->middleware('admin')->group(function () {
     // Dashboard
-    Route::get('/', function () {
-        return view('admin.dashboard');
-    })->name('dashboard');
+    Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
 
     // Pages
     Route::get('/pages', function () {
@@ -241,18 +261,14 @@ Route::prefix('admin')->name('admin.')->group(function () {
         return view('admin.settings.seo');
     })->name('settings.seo');
 
-    // Users
-    Route::get('/users', function () {
-        return view('admin.users.index');
-    })->name('users.index');
+    // Users Management (Resource Routes)
+    Route::resource('users', UserController::class);
+
+    // Roles Management (Resource Routes)
+    Route::resource('roles', RoleController::class);
 
     // Profile
     Route::get('/profile', function () {
         return view('admin.profile');
     })->name('profile');
-
-    // Logout
-    Route::post('/logout', function () {
-        return redirect()->route('home');
-    })->name('logout');
 });
