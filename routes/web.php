@@ -146,6 +146,8 @@ use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\RoleController;
 use App\Http\Controllers\Admin\PageController;
+use App\Http\Controllers\Admin\ProductCategoryController;
+use App\Http\Controllers\Admin\ProductController;
 
 Route::prefix('admin')->name('admin.')->group(function () {
     // Login routes (guest only)
@@ -186,10 +188,11 @@ Route::prefix('admin')->name('admin.')->middleware('admin')->group(function () {
         return view('admin.sliders.index');
     })->name('sliders.index');
 
-    // Products
-    Route::get('/products', function () {
-        return view('admin.products.index');
-    })->name('products.index');
+    // Product Categories (Resource Routes)
+    Route::resource('product-categories', ProductCategoryController::class);
+
+    // Products (Resource Routes)
+    Route::resource('products', ProductController::class);
 
     // Services
     Route::get('/services', function () {
